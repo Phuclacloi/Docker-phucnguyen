@@ -5,9 +5,45 @@
     <artifactId>Nguyenhuuphucdocker</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+    
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>23</maven.compiler.release>
-        <exec.mainClass>com.mycompany.nguyenhuuphucdocker.Nguyenhuuphucdocker</exec.mainClass>
+        <maven.compiler.release>17</maven.compiler.release> <!-- Sử dụng Java 17 -->
+        <exec.mainClass>com.mycompany.nguyenhuuphucdocker.User</exec.mainClass>
     </properties>
+    
+    <dependencies>
+        <!-- Dependency cho JUnit để viết Unit Test -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    
+    <build>
+        <plugins>
+            <!-- Plugin để chỉ định lớp chính (Main-Class) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.2</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.mycompany.nguyenhuuphucdocker.User</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            
+            <!-- Plugin Maven Surefire để chạy Unit Test -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>
